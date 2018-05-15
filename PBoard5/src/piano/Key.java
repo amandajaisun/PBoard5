@@ -17,6 +17,7 @@ public class Key {
 	private boolean isPressed;
 	private boolean isBlack;
 	private int width, height;
+	private String keyLetter;
 	
 	
 	/**
@@ -29,6 +30,24 @@ public class Key {
 		pianoLetter = l;
 		sound = s; 
 		isPressed = false;
+		keyLetter = "undecided";
+		this.isBlack = isBlack;
+		if(isBlack) {
+			width = (int) (0.5 * 75);
+			height = (int) (3.5 * 75);
+			//change width and height
+		}
+		else {
+			width = (int) (0.8 *75);
+			height = (int) (5.5 * 75);
+			//change width and height
+		}
+	}
+	
+	public Key(String l, String k, boolean isBlack) {
+		pianoLetter = l;
+		isPressed = false;
+		keyLetter = k;
 		this.isBlack = isBlack;
 		if(isBlack) {
 			width = (int) (0.5 * 75);
@@ -62,8 +81,16 @@ public class Key {
 	 * Returns the identifying letter of the key.
 	 * @return the letter as a String
 	 */
-	public String getLetter() {
+	public String getPianoLetter() {
 		return pianoLetter;
+	}
+	
+	/**
+	 * Returns the identifying letter of the key.
+	 * @return the letter as a String
+	 */
+	public String getKeyLetter() {
+		return keyLetter;
 	}
 	
 	/**
@@ -133,16 +160,28 @@ public class Key {
  
 			*/
 			
-			if(isPressed)
+			if(isPressed) {
 				g.setColor(Color.YELLOW);
-			else if(!isBlack)
+				g.fillRect(x, y, width, height);
+			}else if(!isBlack) {
 				g.setColor(Color.WHITE);
-			else
+				g.fillRect(x, y, width, height);
 				g.setColor(Color.BLACK);
-			g.fillRect(x, y, width, height);
+				g.drawString(keyLetter, x + 5, y+ 405);
+				g.drawString(pianoLetter, x + 20, y+ 430);
+			}
+			else {
+				g.setColor(Color.BLACK);
+				g.fillRect(x, y, width, height);
+				g.drawString(pianoLetter, x + 15, y-10);
+				g.setColor(Color.WHITE);
+				g.drawString(keyLetter, x + 5, y+255);
+			}
 			
 			g.setColor(Color.BLACK);
 			g.drawRect(x, y, width, height); //black outline for each key
+			
+			
 		}
 	
 	

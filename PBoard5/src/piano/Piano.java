@@ -30,22 +30,22 @@ public class Piano {
 	
 	public Piano() {
 		
-		Key c4 = new Key("c4", s, false);
+		Key c4 = new Key("c4","S", false);
 		
-		Key d = new Key("d", s, false);
-		Key e = new Key("e", s, false);
-		Key f = new Key("f", s, false);
-		Key g = new Key("g", s, false);
-		Key a = new Key("a", s, false);
-		Key b = new Key("b", s, false);
-		Key c5 = new Key("c5", s, false);
+		Key d = new Key("d", "D", false);
+		Key e = new Key("e", "F", false);
+		Key f = new Key("f", "G", false);
+		Key g = new Key("g", "H", false);
+		Key a = new Key("a", "J", false);
+		Key b = new Key("b", "K", false);
+		Key c5 = new Key("c5", "L", false);
 		
-		Key cSharp = new Key("c#", s, true);
-		Key dSharp = new Key("d#", s, true);
+		Key cSharp = new Key("c#", "E", true);
+		Key dSharp = new Key("d#", "R", true);
 		
-		Key fSharp = new Key("f#", s, true);
-		Key gSharp = new Key("g#", s, true);
-		Key aSharp = new Key("a#", s, true);
+		Key fSharp = new Key("f#", "Y", true);
+		Key gSharp = new Key("g#", "U", true);
+		Key aSharp = new Key("a#", "I", true);
 		
 		
 		Key[] octaveC = {c4,d,e,f,g,a,b,c5};

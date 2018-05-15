@@ -24,11 +24,11 @@ public class Recorder {
 
 	}
 	
-	public void record(Key k) {
-		keysRecorded.add(k);
-		
-	}
-	
+//	public Key record(Key k) {
+//		keysRecorded.add(k);
+//		return k;
+//	}
+//	
 	public void record(Key k, int measNum, int beat) {
 		measAndBeat.add(new Point(measNum, beat));
 		keysRecorded.add(k);

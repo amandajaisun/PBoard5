@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
-
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
 	
 	private Key C4, CSharp, k;
+	private ArrayList<Key> keys;
 	private Piano piano;
 	private Sound sound, smp3;
 	private String mp3;
@@ -43,6 +44,7 @@ public class GamePanel extends JPanel implements KeyListener {
 		//CSharp = new Key("C#", new Sound(""), true);
 		 piano = new Piano();
 		 sound = new Sound("");
+		 ArrayList<Key> keys= new ArrayList<Key>();
 		 
 		  setBackground(Color.WHITE);
 		 
@@ -111,73 +113,73 @@ public class GamePanel extends JPanel implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_S) {
 			piano.getOctaveKey(0).keyPressed();
 			k = piano.getOctaveKey(0);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 					
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			piano.getOctaveKey(1).keyPressed();
 			k = piano.getOctaveKey(1);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_F) {
 			piano.getOctaveKey(2).keyPressed();
 			k = piano.getOctaveKey(2);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_G) {
 			piano.getOctaveKey(3).keyPressed();
 			k = piano.getOctaveKey(3);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_H) {
 			piano.getOctaveKey(4).keyPressed();
 			k = piano.getOctaveKey(4);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_J) {
 			piano.getOctaveKey(5).keyPressed();
 			k = piano.getOctaveKey(5);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_K) {
 			piano.getOctaveKey(6).keyPressed();
 			k = piano.getOctaveKey(6);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_L) {
 			piano.getOctaveKey(7).keyPressed();
 			k = piano.getOctaveKey(7);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			piano.getSharpsKey(0).keyPressed();
 			k = piano.getSharpsKey(0);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_R) {
 			piano.getSharpsKey(1).keyPressed();
 			k = piano.getSharpsKey(1);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		}
 		if (e.getKeyCode() == KeyEvent.VK_Y) {
 			piano.getSharpsKey(2).keyPressed();
 			k = piano.getSharpsKey(2);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		}
 		if (e.getKeyCode() == KeyEvent.VK_U) {
 			piano.getSharpsKey(3).keyPressed();
 			k = piano.getSharpsKey(3);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		}
 		if (e.getKeyCode() == KeyEvent.VK_I) {
 			piano.getSharpsKey(4).keyPressed();
 			k = piano.getSharpsKey(4);
-			mp3 = k.getLetter() + ".mp3";
+			mp3 = k.getPianoLetter() + ".mp3";
 		}
 		
-		
+		System.out.println(k);
 	    
 	   // System.out.println("mp3 :" + mp3);
 	    try {
