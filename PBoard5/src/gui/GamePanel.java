@@ -34,6 +34,8 @@ public class GamePanel extends JPanel implements KeyListener {
 	private Piano piano;
 	private Sound sound, smp3;
 	private String mp3;
+	private int numKeysPressed;
+	private int x, y;
 	
 	
 	
@@ -44,7 +46,10 @@ public class GamePanel extends JPanel implements KeyListener {
 		//CSharp = new Key("C#", new Sound(""), true);
 		 piano = new Piano();
 		 sound = new Sound("");
-		 ArrayList<Key> keys= new ArrayList<Key>();
+		 keys= new ArrayList<Key>();
+		 numKeysPressed = 0;
+		 x = 30;
+		 y = 50;
 		 
 		  setBackground(Color.WHITE);
 		 
@@ -71,7 +76,11 @@ public class GamePanel extends JPanel implements KeyListener {
 //	    int h = 300;
 //	    C4.draw(g, w, h);
 //	    CSharp.draw(g, w+15, h);
-	    
+	    if (numKeysPressed != 0 && keys != null) {
+	    		g.drawString(keys.toString(), x, y);
+	    		//x+= -1; //makes it move
+	    		//y += 5;
+	    }
 	    piano.draw(g);
 	    
 	    g2.setTransform(at);
@@ -114,42 +123,58 @@ public class GamePanel extends JPanel implements KeyListener {
 			piano.getOctaveKey(0).keyPressed();
 			k = piano.getOctaveKey(0);
 			mp3 = k.getPianoLetter() + ".mp3";
-					
+			keys.add(k);
+			numKeysPressed += 1;	
+			//x+= 5;
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			piano.getOctaveKey(1).keyPressed();
 			k = piano.getOctaveKey(1);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_F) {
 			piano.getOctaveKey(2).keyPressed();
 			k = piano.getOctaveKey(2);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_G) {
 			piano.getOctaveKey(3).keyPressed();
 			k = piano.getOctaveKey(3);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_H) {
 			piano.getOctaveKey(4).keyPressed();
 			k = piano.getOctaveKey(4);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_J) {
 			piano.getOctaveKey(5).keyPressed();
 			k = piano.getOctaveKey(5);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_K) {
 			piano.getOctaveKey(6).keyPressed();
 			k = piano.getOctaveKey(6);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_L) {
 			piano.getOctaveKey(7).keyPressed();
 			k = piano.getOctaveKey(7);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		
 		
@@ -157,29 +182,40 @@ public class GamePanel extends JPanel implements KeyListener {
 			piano.getSharpsKey(0).keyPressed();
 			k = piano.getSharpsKey(0);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_R) {
 			piano.getSharpsKey(1).keyPressed();
 			k = piano.getSharpsKey(1);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		}
 		if (e.getKeyCode() == KeyEvent.VK_Y) {
 			piano.getSharpsKey(2).keyPressed();
 			k = piano.getSharpsKey(2);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		}
 		if (e.getKeyCode() == KeyEvent.VK_U) {
 			piano.getSharpsKey(3).keyPressed();
 			k = piano.getSharpsKey(3);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		}
 		if (e.getKeyCode() == KeyEvent.VK_I) {
 			piano.getSharpsKey(4).keyPressed();
 			k = piano.getSharpsKey(4);
 			mp3 = k.getPianoLetter() + ".mp3";
+			keys.add(k);
+			numKeysPressed += 1;	
 		}
 		
 		System.out.println(k);
+		
 	    
 	   // System.out.println("mp3 :" + mp3);
 	    try {
