@@ -16,11 +16,13 @@ public class Recorder {
 	private static int MEASURE_NUMBER = 1;
 	private final int BEATS_PER_MEASURE;
 	private ArrayList<Key> keysRecorded;
-	private ArrayList<Point> measAndBeat;
+	private ArrayList<Point> measAndBeats;
 
 
 	public Recorder(int beats) {
 		BEATS_PER_MEASURE = beats;
+		keysRecorded = new ArrayList<Key>();
+		measAndBeats = new ArrayList<Point>(); 
 
 	}
 	
@@ -30,14 +32,17 @@ public class Recorder {
 //	}
 //	
 	public void record(Key k, int measNum, int beat) {
-		measAndBeat.add(new Point(measNum, beat));
+		measAndBeats.add(new Point(measNum, beat));
 		keysRecorded.add(k);
 		
 	}
 	
-	public void draw(Graphics g, ArrayList<Point> p, ArrayList<Key> k) {
-		
-		//g.paint
+	public Key returnKey(Point measAndBeat) {
+		for (int i = 0; i< measAndBeats.size(); i++) {
+			if (measAndBeats.get(i).getX() == measAndBeat.getX() && measAndBeats.get(i).getY() == measAndBeat.getY())
+				return keysRecorded.get(i);
+		}
+		return null; // potential bug
 	}
-
+	
 }
