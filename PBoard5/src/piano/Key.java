@@ -166,15 +166,17 @@ public class Key {
 			}else if(!isBlack) {
 				g.setColor(Color.WHITE);
 				g.fillRect(x, y, width, height);
+				g.drawString(pianoLetter, x + 20, y+ 430);
 				g.setColor(Color.BLACK);
 				g.drawString(keyLetter, x + 5, y+ 405);
-				g.drawString(pianoLetter, x + 20, y+ 430);
+				
 			}
 			else {
 				g.setColor(Color.BLACK);
 				g.fillRect(x, y, width, height);
-				g.drawString(pianoLetter, x + 15, y-10);
 				g.setColor(Color.WHITE);
+				g.drawString(pianoLetter, x + 15, y-10);
+				
 				g.drawString(keyLetter, x + 5, y+255);
 			}
 			

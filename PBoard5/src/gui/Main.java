@@ -28,7 +28,7 @@ public class Main {
 //		
 //		panel.run();
 
-		  JFrame w = new JFrame("Simple Window");
+		  JFrame w = new JFrame("PBoard");
 		    w.setBounds(100, 100, 640, 480);
 		    w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    GamePanel panel = new GamePanel();

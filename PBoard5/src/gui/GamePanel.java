@@ -5,11 +5,14 @@ import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import javazoom.jl.decoder.JavaLayerException;
@@ -27,6 +30,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
+	private Image background;
 
 	
 	private Key C4, CSharp, k;
@@ -48,6 +52,7 @@ public class GamePanel extends JPanel implements KeyListener {
 		 sound = new Sound("");
 		 keys= new ArrayList<Key>();
 		 numKeysPressed = 0;
+		 background = (new ImageIcon("pianoBackground.png")).getImage();
 		 x = 30;
 		 y = 50;
 		 
@@ -71,6 +76,7 @@ public class GamePanel extends JPanel implements KeyListener {
 	    AffineTransform at = g2.getTransform();
 	    g2.scale(ratioX,ratioY);
 	    
+	    g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 	    
 //	    int w = 20;
 //	    int h = 300;
@@ -81,6 +87,7 @@ public class GamePanel extends JPanel implements KeyListener {
 	    		//x+= -1; //makes it move
 	    		//y += 5;
 	    }
+	   
 	    piano.draw(g);
 	    
 	    g2.setTransform(at);
