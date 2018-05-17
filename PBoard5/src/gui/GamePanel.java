@@ -83,6 +83,7 @@ public class GamePanel extends JPanel implements KeyListener {
 //	    C4.draw(g, w, h);
 //	    CSharp.draw(g, w+15, h);
 	    if (numKeysPressed != 0 && keys != null) {
+	    		g.setColor(Color.WHITE);
 	    		g.drawString(keys.toString(), x, y);
 	    		//x+= -1; //makes it move
 	    		//y += 5;
