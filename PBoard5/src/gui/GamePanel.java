@@ -1,6 +1,7 @@
 package gui;
 
 import java.applet.Applet;
+
 import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -17,10 +18,13 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.Timer;
+//import javax.swing.Timer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javazoom.jl.decoder.JavaLayerException;
 import piano.Key;
+import piano.Note;
 import piano.Piano;
 import piano.Recorder;
 import piano.Sound;
@@ -44,8 +48,11 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 	private Sound sound, smp3;
 	private String mp3;
 	private int numKeysPressed, x, y;
-	private Recorder r;
+	private Recorder record;
 	private Timer timer;
+	private ArrayList<Note> notes;
+	private final long startTime;
+	//private meter;
 
 	
 	
@@ -55,19 +62,18 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		 piano = new Piano();
 		 sound = new Sound("");
 		 keys= new ArrayList<Key>();
+		 notes= new ArrayList<Note>();
+		 record = new Recorder(4);
 		 numKeysPressed = 0;
 		 background = (new ImageIcon("pianoBackground.png")).getImage();
 		 x = 30;
 		 y = 50;
-		 r = new Recorder(4);
-		 
-		 ActionListener taskPerformer = new ActionListener() {
-			 public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-		 };
-		 timer = new Timer(1000, taskPerformer);
+		 record = new Recorder(4);
+	
+		 startTime = System.currentTimeMillis();
+		 System.out.println(System.currentTimeMillis());
+		// TimerTask task = new TimerTask();
+		// timer.schedule(task, delay);
 		 
 		  setBackground(Color.WHITE);
 		 
@@ -138,7 +144,12 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
-			//x+= 5;
+			
+			//int beat = (int)((System.currentTimeMillis()-startTime)%measure); //every half second is a beat
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
+			//record.printKeys();
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			piano.getOctaveKey(1).keyPressed();
@@ -146,6 +157,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_F) {
 			piano.getOctaveKey(2).keyPressed();
@@ -153,6 +168,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_G) {
 			piano.getOctaveKey(3).keyPressed();
@@ -160,6 +179,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_H) {
 			piano.getOctaveKey(4).keyPressed();
@@ -167,6 +190,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_J) {
 			piano.getOctaveKey(5).keyPressed();
@@ -174,6 +201,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_K) {
 			piano.getOctaveKey(6).keyPressed();
@@ -181,6 +212,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_L) {
 			piano.getOctaveKey(7).keyPressed();
@@ -188,6 +223,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		
 		
@@ -197,6 +236,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		} 
 		if (e.getKeyCode() == KeyEvent.VK_R) {
 			piano.getSharpsKey(1).keyPressed();
@@ -204,6 +247,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_Y) {
 			piano.getSharpsKey(2).keyPressed();
@@ -211,6 +258,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_U) {
 			piano.getSharpsKey(3).keyPressed();
@@ -218,6 +269,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_I) {
 			piano.getSharpsKey(4).keyPressed();
@@ -225,6 +280,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 			mp3 = k.getPianoLetter() + ".mp3";
 			keys.add(k);
 			numKeysPressed += 1;	
+			
+			int measure = (int) ((System.currentTimeMillis()-startTime)/2000); // every 2 seconds is a measure
+			System.out.println("measure: "+measure);
+			record.record(k, measure);
 		}
 		
 		System.out.println(k);
@@ -293,7 +352,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	
 
 
 

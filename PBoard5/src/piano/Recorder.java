@@ -16,13 +16,13 @@ public class Recorder {
 	private static int MEASURE_NUMBER = 1;
 	private final int BEATS_PER_MEASURE;
 	private ArrayList<Key> keysRecorded;
-	private ArrayList<Point> measAndBeats;
+	private ArrayList<Integer> meas;
 
 
-	public Recorder(int beats) {
-		BEATS_PER_MEASURE = beats;
+	public Recorder(int bpm) {
+		BEATS_PER_MEASURE = bpm;
 		keysRecorded = new ArrayList<Key>();
-		measAndBeats = new ArrayList<Point>(); 
+		meas = new ArrayList<Integer>(); 
 
 	}
 	
@@ -31,18 +31,25 @@ public class Recorder {
 //		return k;
 //	}
 //	
-	public void record(Key k, int measNum, int beat) {
-		measAndBeats.add(new Point(measNum, beat));
+	public void record(Key k, int measNum) {
+		meas.add(measNum);
 		keysRecorded.add(k);
 		
 	}
 	
-	public Key returnKey(Point measAndBeat) {
-		for (int i = 0; i< measAndBeats.size(); i++) {
-			if (measAndBeats.get(i).getX() == measAndBeat.getX() && measAndBeats.get(i).getY() == measAndBeat.getY())
+	public Key returnKey(int measure) {
+		for (int i = 0; i< meas.size(); i++) {
+			if(measure == meas.get(i))
 				return keysRecorded.get(i);
 		}
 		return null; // potential bug
+	}
+	public void printKeys() {
+		for (int i = 0; i< meas.size(); i++) {
+			System.out.println("key:" + keysRecorded.get(i));
+			System.out.println("measure:" + meas.get(i));
+			
+		}
 	}
 	
 }
