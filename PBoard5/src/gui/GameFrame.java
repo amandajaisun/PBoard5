@@ -22,17 +22,18 @@ public class GameFrame extends JFrame{
 		CardLayout cl = new CardLayout();
 		cards.setLayout(cl);
 		
-		start = new StartPanel(this);
-		instruct = new InstructionsPanel(this);
+//		start = new StartPanel(this);
+//		instruct = new InstructionsPanel(this);
 		game = new GamePanel();
 		addKeyListener(game);
+		
 	
 		cards.add(start);
 		
 //		cards.add(start, "1");
 //		cards.add(instruct, "2");
 //		cards.add(game, "3");
-		
+		//game.run();
 		add(cards);
 		
 		//addKeyListener(start);
@@ -49,7 +50,9 @@ public class GameFrame extends JFrame{
     			contentPane.add(instruct);
         } else {
         	contentPane.add(game);
+        	//game.run();
         }
+        
         
         System.out.println("new panel created");//for debugging purposes
         revalidate();

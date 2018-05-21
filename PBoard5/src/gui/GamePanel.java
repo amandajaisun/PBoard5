@@ -46,11 +46,13 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 	private int numKeysPressed, x, y;
 	private Recorder r;
 	private Timer timer;
+	private Main m;
 
 	
 	
-	 public GamePanel () {
+	 public GamePanel (Main m) {
 		 super();
+		 this.m =m;
 
 		 piano = new Piano();
 		 sound = new Sound("");
@@ -61,16 +63,18 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		 y = 50;
 		 r = new Recorder(4);
 		 
+		 
 		 ActionListener taskPerformer = new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					
 				}
 		 };
-		 timer = new Timer(1000, taskPerformer);
+		 timer = new Timer(16000, taskPerformer);
+		 timer.start();
 		 
 		  setBackground(Color.WHITE);
-		 
+//		 run();
 	  }
 	 
 	
@@ -129,6 +133,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 
 	public void keyPressed(KeyEvent e) {
 		//not checking that key's pressed
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
+	  		m.changePanel("1");//RS
+	  	
+	  	}
 		
 		mp3 = "";
 		

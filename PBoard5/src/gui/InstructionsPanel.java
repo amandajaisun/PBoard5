@@ -26,10 +26,12 @@ public class InstructionsPanel extends JPanel implements KeyListener, ActionList
 	private JButton back;
 	private GameFrame frame;
 	private Rectangle button;
+	private Main w;
 	
-	public InstructionsPanel(GameFrame f) {
+	public InstructionsPanel(Main w) {
 		background = (new ImageIcon("instructionsBackground.png")).getImage();
-		frame = f;
+		this.w = w;
+		//frame = f;
 		button = new Rectangle(50, 530, 200, 50);
 //		 setLayout(null);
 //		 setLayout(new GridLayout());
@@ -38,7 +40,7 @@ public class InstructionsPanel extends JPanel implements KeyListener, ActionList
 
 		 	Font font = new Font("Sans", Font.BOLD, 20);
 		 
-			back = new JButton("BACK");
+			back = new JButton("CONTINUE");
 			//back.setSize(200, 50);
 			//back.setLocation(50,530);
 			back.setFont(font);
@@ -72,13 +74,15 @@ public class InstructionsPanel extends JPanel implements KeyListener, ActionList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		String str = e.getActionCommand();
+		w.changePanel("3");
+	/*	String str = e.getActionCommand();
 		
-		if (str.equals("BACK")) {
-			frame.changePanel("1");
-		} else {
-			frame.changePanel("2");
-		}
+		if (str.equals("BACK")); 
+			//Main.changeState(1);
+//			frame.changePanel("1");
+ * 
+ */
+		
 			
 		
 		
