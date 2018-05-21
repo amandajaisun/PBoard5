@@ -6,18 +6,23 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import javazoom.jl.decoder.JavaLayerException;
 import piano.Key;
 import piano.Piano;
+import piano.Recorder;
 import piano.Sound;
 
 
@@ -26,7 +31,7 @@ import piano.Sound;
  * @author Rithika, Keertana, Amanda 
  *
  */
-public class GamePanel extends JPanel implements KeyListener {
+public class GamePanel extends JPanel implements KeyListener, ActionListener{
 
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
@@ -38,16 +43,15 @@ public class GamePanel extends JPanel implements KeyListener {
 	private Piano piano;
 	private Sound sound, smp3;
 	private String mp3;
-	private int numKeysPressed;
-	private int x, y;
-	
-	
+	private int numKeysPressed, x, y;
+	private Recorder r;
+	private Timer timer;
+
 	
 	
 	 public GamePanel () {
 		 super();
-		//C4 = new Key("C", new Sound(""), false);
-		//CSharp = new Key("C#", new Sound(""), true);
+
 		 piano = new Piano();
 		 sound = new Sound("");
 		 keys= new ArrayList<Key>();
@@ -55,6 +59,15 @@ public class GamePanel extends JPanel implements KeyListener {
 		 background = (new ImageIcon("pianoBackground.png")).getImage();
 		 x = 30;
 		 y = 50;
+		 r = new Recorder(4);
+		 
+		 ActionListener taskPerformer = new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+		 };
+		 timer = new Timer(1000, taskPerformer);
 		 
 		  setBackground(Color.WHITE);
 		 
@@ -75,18 +88,13 @@ public class GamePanel extends JPanel implements KeyListener {
 	    Graphics2D g2 = (Graphics2D)g;
 	    AffineTransform at = g2.getTransform();
 	    g2.scale(ratioX,ratioY);
-	    
+	  
 	    g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 	    
-//	    int w = 20;
-//	    int h = 300;
-//	    C4.draw(g, w, h);
-//	    CSharp.draw(g, w+15, h);
 	    if (numKeysPressed != 0 && keys != null) {
 	    		g.setColor(Color.WHITE);
 	    		g.drawString(keys.toString(), x, y);
-	    		//x+= -1; //makes it move
-	    		//y += 5;
+	  
 	    }
 	   
 	    piano.draw(g);
@@ -114,15 +122,12 @@ public class GamePanel extends JPanel implements KeyListener {
 		  	}
 		  }
 
-	@Override
+
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		//not checking that key's pressed
 		
 		mp3 = "";
@@ -224,8 +229,6 @@ public class GamePanel extends JPanel implements KeyListener {
 		
 		System.out.println(k);
 		
-	    
-	   // System.out.println("mp3 :" + mp3);
 	    try {
 			sound.playSound(mp3);
 		} catch (JavaLayerException e1) {
@@ -236,9 +239,8 @@ public class GamePanel extends JPanel implements KeyListener {
 		
 	}
 
-	@Override
+
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_S) {
 			piano.getOctaveKey(0).keyReleased();	
 		}
@@ -284,6 +286,18 @@ public class GamePanel extends JPanel implements KeyListener {
 		
 	}
 
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	
 	
 	
 }

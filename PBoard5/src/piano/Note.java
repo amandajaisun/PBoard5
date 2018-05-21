@@ -1,5 +1,6 @@
 package piano;
 
+import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -10,16 +11,20 @@ import java.util.ArrayList;
  */
 public class Note {
 	Key thiskey;
-	private int x,y;
-	
-	public Note(Key k, int x, int y) {
+	private int x,y, r;
+
+	public Note(Key k, int x, int y, int r) {
 		thiskey = k;
 		this.x = x;
 		this.y = y;
-
+		this.r = r;
 	}
 
 	public void translate(int speed) {
 		x -= speed;
+	}
+
+	public void draw(Graphics g) {
+		g.drawOval(x, y, 2*r, 2*r);
 	}
 }
