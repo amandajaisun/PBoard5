@@ -27,18 +27,19 @@ public class Main {
 //		
 //		
 //		panel.run();
-
-		  JFrame w = new JFrame("PBoard");
+		GameFrame w = new GameFrame();
+		  JFrame g = new JFrame("PBoard");
 		    w.setBounds(100, 100, 640, 480);
 		    w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		    GamePanel panel = new GamePanel();
-//		    StartPanel panel = new StartPanel();
-		    w.addKeyListener(panel);
-		    w.add(panel);
+		    //GamePanel panel = new GamePanel();
+		   // StartPanel panel = new StartPanel();     
+//		    w.addKeyListener(panel);
+//		    w.add(panel);
+//		    w.add(g);
 		    w.setResizable(true);
 		    w.setVisible(true);
 		    
-		    panel.run();
+		   // panel.run();
 		    
 		    
 
