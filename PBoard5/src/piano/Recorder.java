@@ -45,4 +45,8 @@ public class Recorder {
 		return null; // potential bug
 	}
 	
+	public String toString() {
+		return "";
+	}
+	
 }

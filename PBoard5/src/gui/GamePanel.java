@@ -140,11 +140,11 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 	  
 	    g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 	    
-	    if (numKeysPressed != 0 && keys != null) {
-	    		g.setColor(Color.WHITE);
-	    		g.drawString(keys.toString(), x, y);
-	  
-	    }
+//	    if (numKeysPressed != 0 && keys != null) {
+//	    		g.setColor(Color.WHITE);
+//	    		g.drawString(keys.toString(), x, y);
+//	  
+//	    }
 	   
 	    piano.draw(g);
 	    

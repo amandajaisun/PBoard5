@@ -65,4 +65,16 @@ public class KeyStrokes {
 		return output;
 
 	}
+	
+	public long getTimestamp(int i) {
+		return timestamps.get(i);
+	}
+	
+	public ArrayList<Long> getTimestamps() {
+		return timestamps;
+	}
+	
+	public ArrayList<Key> getKeys() {
+		return keys;
+	}
 }
