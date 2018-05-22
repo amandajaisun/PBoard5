@@ -16,7 +16,7 @@ import piano.Sound;
 public class Main extends JFrame {
 	
 	private JPanel cardPanel;
-	private GamePanel gamePanel;
+	//private GamePanel gamePanel;
 	
 	public Main() {
 			super();
@@ -29,9 +29,8 @@ public class Main extends JFrame {
       
 	    StartPanel panel1 = new StartPanel(this);
 	    InstructionsPanel panel2 = new InstructionsPanel(this);
-	    gamePanel = new GamePanel(this);
-	    addKeyListener(gamePanel);
-	    this.add(gamePanel);  
+	    GamePanel gamePanel = new GamePanel(this);
+	   
 	    
 	    
 	    cardPanel.add(panel1,"1"); // Card is named "1"
@@ -40,7 +39,6 @@ public class Main extends JFrame {
 	    
 	    add(cardPanel);
 	    addKeyListener(gamePanel);//RS	
-	   // gamePanel.run();
 	   
 	    setVisible(true);
 	    gamePanel.run();

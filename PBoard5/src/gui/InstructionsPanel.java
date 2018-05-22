@@ -20,19 +20,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-public class InstructionsPanel extends JPanel implements KeyListener, ActionListener, MouseListener{
+public class InstructionsPanel extends JPanel implements ActionListener{
 
 	private Image background;
-	private JButton back;
-	private GameFrame frame;
-	private Rectangle button;
+	private JButton cont;
+	//private GameFrame frame;
 	private Main w;
 	
 	public InstructionsPanel(Main w) {
 		background = (new ImageIcon("instructionsBackground.png")).getImage();
 		this.w = w;
 		//frame = f;
-		button = new Rectangle(50, 530, 200, 50);
 //		 setLayout(null);
 //		 setLayout(new GridLayout());
 		
@@ -40,16 +38,16 @@ public class InstructionsPanel extends JPanel implements KeyListener, ActionList
 
 		 	Font font = new Font("Sans", Font.BOLD, 20);
 		 
-			back = new JButton("CONTINUE");
+			cont = new JButton("CONTINUE");
 			//back.setSize(200, 50);
 			//back.setLocation(50,530);
-			back.setFont(font);
+			cont.setFont(font);
 			//back.setBounds(50, 530, 200, 50);
 			
 		
-			add(back);
+			add(cont);
 			
-			back.addActionListener(this);
+			cont.addActionListener(this);
 	}
 
 	public void paintComponent (Graphics g) {
@@ -66,8 +64,8 @@ public class InstructionsPanel extends JPanel implements KeyListener, ActionList
 	    g2.scale(ratioX,ratioY);
 	    
 	    g.drawImage(background, 0, 0, GamePanel.DRAWING_WIDTH, GamePanel.DRAWING_HEIGHT, this);
-	    g.drawRect(50, 530, 200, 50);
-	    g.drawString("BACK", 60, 530);
+	    g2.setTransform(at);
+
 	   
 	}
 
@@ -75,77 +73,11 @@ public class InstructionsPanel extends JPanel implements KeyListener, ActionList
 	public void actionPerformed(ActionEvent e) {
 		
 		w.changePanel("3");
-	/*	String str = e.getActionCommand();
-		
-		if (str.equals("BACK")); 
-			//Main.changeState(1);
-//			frame.changePanel("1");
- * 
- */
-		
-			
-		
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-		 int width = getWidth();
-		    int height = getHeight();
-		    
-		double xRatio = width/800.0;
-	    double yRatio = height/600.0;
 	
-	    double xClick = e.getX();
-		double yClick = e.getY();
-		
-		if(button.contains(xClick, yClick)) {
-			System.out.print("hi");
-			frame.changePanel("1");
-		}
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
+
+	

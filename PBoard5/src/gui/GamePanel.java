@@ -38,10 +38,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 	private Image background;
 
 	
-	private Key C4, CSharp, k;
+	private Key  k;
 	private ArrayList<Key> keys;
 	private Piano piano;
-	private Sound sound, smp3;
+	private Sound sound;
 	private String mp3;
 	private int numKeysPressed, x, y;
 	private Recorder r;
@@ -58,7 +58,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		 sound = new Sound("");
 		 keys= new ArrayList<Key>();
 		 numKeysPressed = 0;
-		 background = (new ImageIcon("pianoBackground.png")).getImage();
+		 background = (new ImageIcon("pianoBckgrd.png")).getImage();
 		 x = 30;
 		 y = 50;
 		 r = new Recorder(4);
@@ -74,7 +74,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		 timer.start();
 		 
 		  setBackground(Color.WHITE);
-//		 run();
+		 //run();
 	  }
 	 
 	
@@ -104,6 +104,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 	    piano.draw(g);
 	    
 	    g2.setTransform(at);
+	    
+//	    run();
 	  }
 	 
 	 public void run() {
@@ -113,7 +115,6 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		  		
 		  		repaint();
 		  		
-		  		//paintComponent()
 		  		
 		  		
 		  		// WAIT
@@ -133,6 +134,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 
 	public void keyPressed(KeyEvent e) {
 		//not checking that key's pressed
+		//run();
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
 	  		m.changePanel("1");//RS
 	  	
