@@ -39,10 +39,9 @@ public class InstructionsPanel extends JPanel implements ActionListener{
 		 	Font font = new Font("Sans", Font.BOLD, 20);
 		 
 			cont = new JButton("CONTINUE");
-			//back.setSize(200, 50);
-			//back.setLocation(50,530);
+		
 			cont.setFont(font);
-			//back.setBounds(50, 530, 200, 50);
+		
 			
 		
 			add(cont);

@@ -3,6 +3,7 @@ package gui;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -16,11 +17,14 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SpringLayout;
 import javax.swing.Timer;
 
 import javazoom.jl.decoder.JavaLayerException;
 import piano.Key;
+import piano.KeyStrokes;
 import piano.Piano;
 import piano.Recorder;
 import piano.Sound;
@@ -47,13 +51,54 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 	private Recorder r;
 	private Timer timer;
 	private Main m;
-
+	private JButton record, stop, replay;
+	KeyStrokes strokes;
+	private boolean isRecording;
+	
 	
 	
 	 public GamePanel (Main m) {
 		 super();
 		 this.m =m;
 
+		 isRecording = false;
+
+//		 setLayout(null);
+		 SpringLayout layout = new SpringLayout();
+		 setLayout(layout);
+		 record = new JButton("RECORD");
+		 layout.putConstraint(SpringLayout.WEST, record,
+                5,
+                 SpringLayout.WEST, this);
+		 	Font font = new Font("Sans", Font.BOLD, 20);
+			
+			record.setFont(font);
+			add(record);
+			record.addActionListener(this);
+			record.setFocusable(false);
+			
+			stop = new JButton("STOP");
+			stop.setFont(font);
+			add(stop);
+			stop.addActionListener(this);
+			stop.setFocusable(false);
+			
+			 layout.putConstraint(SpringLayout.EAST, stop,
+	                 -5,
+	                 SpringLayout.EAST, this);
+			 
+			 
+			 replay = new JButton("REPLAY");
+			 replay.setFont(font);
+				add(replay);
+				replay.addActionListener(this);
+				replay.setFocusable(false);
+				
+				 layout.putConstraint(SpringLayout.SOUTH, replay,
+		                 5,
+		                 SpringLayout.SOUTH, this);
+			 
+		 
 		 piano = new Piano();
 		 sound = new Sound("");
 		 keys= new ArrayList<Key>();
@@ -64,15 +109,15 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		 r = new Recorder(4);
 		 
 		 
-		 ActionListener taskPerformer = new ActionListener() {
-			 public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-		 };
-		 timer = new Timer(16000, taskPerformer);
-		 timer.start();
-		 
+//		 ActionListener taskPerformer = new ActionListener() {
+//			 public void actionPerformed(ActionEvent e) {
+//					// TODO Auto-generated method stub
+//					
+//				}
+//		 };
+//		 timer = new Timer(16000, taskPerformer);
+//		 timer.start();
+//		 
 		  setBackground(Color.WHITE);
 		 //run();
 	  }
@@ -135,6 +180,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 	public void keyPressed(KeyEvent e) {
 		//not checking that key's pressed
 		//run();
+		
+		
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
 	  		m.changePanel("1");//RS
 	  	
@@ -239,6 +286,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 		
 		System.out.println(k);
 		
+		if (isRecording)
+			strokes.addKeyStroke(k);
+		//r.record(k, measNum, beat);
+		
 	    try {
 			sound.playSound(mp3);
 		} catch (JavaLayerException e1) {
@@ -300,7 +351,20 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+//		m.addKeyListener(this);
+		String str = e.getActionCommand();
+		
+		 if (str.equals("RECORD")) {
+			 System.out.println("bh");
+			 isRecording = true;
+			  strokes = new KeyStrokes();
+		 } else if (str.equals("STOP")) {
+			 System.out.println(strokes);
+			 isRecording = false;
+			 
+		 } else if (str.equals("REPLAY")) {
+			 strokes.playBack();
+		 }
 		
 	}
 

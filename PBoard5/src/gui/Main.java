@@ -39,6 +39,7 @@ public class Main extends JFrame {
 	    
 	    add(cardPanel);
 	    addKeyListener(gamePanel);//RS	
+
 	   
 	    setVisible(true);
 	    gamePanel.run();
