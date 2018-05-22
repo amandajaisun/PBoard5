@@ -52,4 +52,8 @@ public class Recorder {
 		}
 	}
 	
+	public String toString() {
+		return "";
+	}
+	
 }
